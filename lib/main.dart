@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+// le point d'entrée du programme, la première fonction exécutée  lorsque le programme est lancé
 void main() {
+  // une fonction qui  prendre le widget principal et lancer  l'application et démarrer l'interface utilisateur
   runApp(const MyApp());
 }
 
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // le composant global qui configure l'app pour utiliser les éléments de design material :thème, couleur, navigation
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -57,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    // signale à flutter qu'une donnée a changé et qu'il faut redessiner l'interface pour afficher ce qui change
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -75,6 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    //  le squelette visuel pour la page comme la structure de base :(appBar), (body)
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -120,3 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+// lib/ : contient tout le code source Dart de l'application (comme main.dart)
+// android/ : contient les fichiers nécessaires pour exécuter l'application sur Android
+// web/ : contient les fichiers nécessaires pourexécuter l'application sur un navigateur Web
+//pubspec.yaml : le fichier de configuration pour gérer les packages, les images et les polices
