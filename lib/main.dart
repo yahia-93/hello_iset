@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 153, 5, 141)),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -68,6 +68,20 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+      }
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
     });
   }
 
@@ -108,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
             Text(
@@ -118,10 +132,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'dec',
+            onPressed: _decrementCounter,
+            child: const Icon(Icons.remove),
+          ),
+          const SizedBox(width: 10),
+          FloatingActionButton(
+            heroTag: 'reset',
+            onPressed: _resetCounter,
+            child: const Icon(Icons.refresh),
+          ),
+          const SizedBox(width: 10),
+          FloatingActionButton(
+            heroTag: 'inc',
+            onPressed: _incrementCounter,
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
@@ -129,4 +160,4 @@ class _MyHomePageState extends State<MyHomePage> {
 // lib/ : contient tout le code source Dart de l'application (comme main.dart)
 // android/ : contient les fichiers nécessaires pour exécuter l'application sur Android
 // web/ : contient les fichiers nécessaires pourexécuter l'application sur un navigateur Web
-//pubspec.yaml : le fichier de configuration pour gérer les packages, les images et les polices
+//pubspec.yaml : le fichier de configuration pour gérer les packages, les images et les police
